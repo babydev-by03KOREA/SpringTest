@@ -1,6 +1,5 @@
 package com.spring.mvc.info;
 
-import com.spring.mvc.HomeController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;

@@ -36,31 +36,4 @@ public class HomeController {
 		return "home";
 	}
 
-	@RequestMapping("/vip.do")
-	public String vip(Model model) {
-		logger.info("VIP USER APPROACH");
-
-		return "Security/vip";
-	}
-
-	@RequestMapping("/admin.do")
-	public String admin(Model model) {
-		logger.info("ADMIN USER APPROACH");
-
-		return "Security/admin";
-	}
-
-	@RequestMapping("/login.do")
-	public String login(Model model) {
-		logger.info("LOGIN APPROACH");
-
-		return "User/login";
-	}
-
-	@RequestMapping("/loginError.do")
-	public String loginError(Model model) {
-		model.addAttribute("Error","YOU'RE LOGIN ACCESS WAS DENIED \n PLEASE CHECK YOUR ID OR PASSWORD");
-		return "Security/loginError";
-	}
-//	loginCheck, logout remove
 }
