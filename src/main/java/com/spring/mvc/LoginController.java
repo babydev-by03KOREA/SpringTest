@@ -19,7 +19,14 @@ public class LoginController {
         return "Security/admin";
     }
 
-    @RequestMapping("loginPage.do")
+    @RequestMapping("vip.do")
+    public String vip(Model model) {
+        logger.info("VIP USER APPROACH");
+
+        return "Security/admin";
+    }
+
+    @RequestMapping("loginForm.do")
     public String login(Model model) {
         logger.info("LOGIN APPROACH");
 
@@ -28,6 +35,7 @@ public class LoginController {
 
     @RequestMapping("loginError.do")
     public String loginError(Model model) throws Exception {
+        logger.info("SPRING SECURITY ACCESS WAS DENIED!");
         model.addAttribute("Error","YOU'RE LOGIN ACCESS WAS DENIED \n PLEASE CHECK YOUR ID OR PASSWORD");
         return "Security/loginError";
     }

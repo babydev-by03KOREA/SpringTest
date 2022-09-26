@@ -65,12 +65,12 @@
     <h1 class="h3 mb-3 font-weight-normal"></h1>
     <input type="text" name="userid" class="form-control" placeholder="ID" required autofocus>
     <input type="password" name="userpwd" class="form-control" placeholder="Password" required>
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
     <button class="btn btn-lg btn-primary btn-block" type="submit">LOGIN</button>
     <c:if test="${param.err == true}">
         <p style="color: red">ID와 Password를 확인해주세요.</p>
     </c:if>
-    <p class="mt-5 mb-3 text-muted">shxrecord.tistory.com</p>
 </form>
 </body>
 </html>
