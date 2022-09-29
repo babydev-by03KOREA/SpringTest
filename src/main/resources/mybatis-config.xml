@@ -4,8 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-<!--    <typeAliases>-->
-<!--        <package name="패키지명"/>-->
-<!--    </typeAliases>-->
+    <typeAliases>
+        <typeAlias alias="MemberDTO" type="com.spring.mvc.dto.MemberDTO"/>
+    </typeAliases>
 
 </configuration>

@@ -27,7 +27,7 @@
 		<constructor-arg ref="sqlSessionFactory"/>
 	</bean>
 
-	<mybatis-spring:scan base-package="com.kbbank.donation..*"/>
+	<mybatis-spring:scan base-package="com.spring.mvc..*"/>
 
 	<!-- hikariCP -->
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
