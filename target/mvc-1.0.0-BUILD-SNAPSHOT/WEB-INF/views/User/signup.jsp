@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>SIGN UP PAGE</title>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"/>
     <!-- JavaScript Bundle with Popper -->
@@ -10,7 +10,7 @@
 <body>
 <%@include file="../header.jsp"%>
 <section id="content">
-    <form role="form" method="post" autocomplete="off">
+    <form method="post" action="/member/signupCheck.do">
         <div class="input_area">
             <label for="userId">아이디</label>
             <input type="email" id="userId" name="userId" placeholder="example@email.com" required="required" />

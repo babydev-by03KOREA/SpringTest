@@ -35,7 +35,7 @@
 
             <div class="text-end">
                 <button type="button" class="btn btn-outline-light me-2">Login</button>
-                <button type="button" class="btn btn-warning"><a href="/member/signup.do" style="text-decoration:none;">Sign-up</a>
+                <button type="button" class="btn btn-warning"><a href="/member/agreement.do" style="text-decoration:none;">Sign-up</a>
                 </button>
             </div>
         </div>
