@@ -9,12 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/member/*")
@@ -72,11 +72,38 @@ public class MemberController {
         }
     }
 
-    @RequestMapping("admin.do")
-    public String admin(Model model) {
-        logger.info("ADMIN USER APPROACH");
+    @GetMapping("login.do")
+    public String getLogin() throws Exception {
+        logger.info("LOGIN PAGE APPROACH");
+        return "User/login";
+    }
 
-        return "Security/admin";
+    @PostMapping("login.do")
+    public String postLogin(MemberDTO dto, RedirectAttributes redirect, HttpServletRequest request) throws Exception {
+        logger.info("POST LOGIN APPROACH > LOGIN PROGRESSING...");
+
+        MemberDTO login = service.signin(dto);
+        HttpSession session = request.getSession();
+
+        /* User Input Value == User DB Value Match Check T or F */
+        boolean isPasswordMatch = passwordEncoder.matches(dto.getUserPass(), login.getUserPass());
+
+        if (login != null && isPasswordMatch) {
+            session.setAttribute("member", login);
+        } else {
+            session.setAttribute("member", null);
+            redirect.addAttribute("msg", false);
+            return "redirect:/member/login.do";
+        }
+
+        return "redirect:/index.do";
+    }
+
+    @GetMapping("logout.do")
+    public String signOut(HttpSession session) throws Exception {
+        logger.info("USER LOGOUT BYEBYE");
+        service.logout(session);
+        return "redirect:/index.do";
     }
 
     @RequestMapping("loginError.do")

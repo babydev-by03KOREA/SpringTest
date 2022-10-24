@@ -23,5 +23,14 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.spring.mvc" />
+
+	<beans:bean id="AdminInterceptor" class="com.spring.mvc.interCeptor.AdminInterceptor" />
+
+	<interceptors>
+		<interceptor>
+			<mapping path="/admin/**" />
+			<beans:ref bean="AdminInterceptor" />
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>

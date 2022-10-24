@@ -5,6 +5,7 @@ import com.spring.mvc.dto.MemberDTO;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 @Service
 public class MemberService implements IMemberService {
@@ -15,5 +16,15 @@ public class MemberService implements IMemberService {
     @Override
     public void signup(MemberDTO dto) throws Exception {
         dao.signup(dto);
+    }
+
+    @Override
+    public MemberDTO signin(MemberDTO dto) throws Exception {
+        return dao.signin(dto);
+    }
+
+    @Override
+    public void logout(HttpSession session) throws Exception {
+        session.invalidate();
     }
 }

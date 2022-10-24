@@ -20,8 +20,16 @@ public class SurveyController {
         return "Survey/surveyForm";
     }
 
+    /*
+    * @RequestParam("ansData"); > url?ansData=12
+    * @ModelAttribute("ansData") AnswerData data > Obj Mapping
+    * @ModelAttribute 장점 > @RequestParam 무수히 많은걸 하나로 줄이기 가능
+    * 통째로 넘겨준다 생각하기!
+    * */
     @PostMapping("surveyValue.do")
     public String submit(@ModelAttribute("ansData") AnswerData data) {
+        logger.info("data.getRESPONSE()" + data.getResponses());
+        logger.info("data.getDTO()" + data.getDto());
         return "Survey/submitted";
     }
 }

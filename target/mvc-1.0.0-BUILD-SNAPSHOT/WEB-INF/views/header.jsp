@@ -1,4 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
     <title>HEADER</title>
@@ -34,9 +36,26 @@
             </form>
 
             <div class="text-end">
-                <button type="button" class="btn btn-outline-light me-2">Login</button>
-                <button type="button" class="btn btn-warning"><a href="/member/agreement.do" style="text-decoration:none;">Sign-up</a>
+                <c:if test="${member == null}">
+                <button type="button" class="btn btn-outline-light me-2"><a href="/member/login.do"
+                                                                            style="text-decoration:none;">Login</a>
                 </button>
+                <button type="button" class="btn btn-warning"><a href="/member/agreement.do"
+                                                                 style="text-decoration:none;">Sign-up</a>
+                    </c:if>
+                    <c:if test="${member != null}">
+                    <c:if test="${member.verify == 9}">
+                    <button type="button" class="btn btn-outline-light me-2"><a href="/admin/index.do"
+                                                                                style="text-decoration:none;">ADMIN</a>
+                    </button>
+                    </c:if>
+                    <button type="button" class="btn btn-outline-light me-2"><a href="/member/logout.do"
+                                                                                style="text-decoration:none;">Logout</a>
+                    </button>
+                    <button type="button" class="btn btn-warning"><a href="/member/agreement.do"
+                                                                     style="text-decoration:none;">${member.userName}</a>
+                        </c:if>
+                    </button>
             </div>
         </div>
     </div>
