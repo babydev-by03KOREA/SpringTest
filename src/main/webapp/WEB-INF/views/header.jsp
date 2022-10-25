@@ -3,62 +3,31 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8"/>
+    <!--  웹페이지가 화면(Viewport)에 표현되는 방식을 설정합니다. 모바일 환경에서 적용됩니다.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>HEADER</title>
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"/>
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"
-            defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com"/>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="stylesheet" href="<c:url value="/resources/css/navbar.css"/>">
 </head>
 <body>
-<header class="p-3 text-bg-dark">
-    <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                    <use xlink:href="#bootstrap"></use>
-                </svg>
-            </a>
-
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="/index.do" class="nav-link px-2 text-secondary">Home</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">About</a></li>
-            </ul>
-
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..."
-                       aria-label="Search">
-            </form>
-
-            <div class="text-end">
-                <c:if test="${member == null}">
-                <button type="button" class="btn btn-outline-light me-2"><a href="/member/login.do"
-                                                                            style="text-decoration:none;">Login</a>
-                </button>
-                <button type="button" class="btn btn-warning"><a href="/member/agreement.do"
-                                                                 style="text-decoration:none;">Sign-up</a>
-                    </c:if>
-                    <c:if test="${member != null}">
-                    <c:if test="${member.verify == 9}">
-                    <button type="button" class="btn btn-outline-light me-2"><a href="/admin/index.do"
-                                                                                style="text-decoration:none;">ADMIN</a>
-                    </button>
-                    </c:if>
-                    <button type="button" class="btn btn-outline-light me-2"><a href="/member/logout.do"
-                                                                                style="text-decoration:none;">Logout</a>
-                    </button>
-                    <button type="button" class="btn btn-warning"><a href="/member/agreement.do"
-                                                                     style="text-decoration:none;">${member.userName}</a>
-                        </c:if>
-                    </button>
-            </div>
-        </div>
+<header class="main_header">
+    <div class="login_menu">
+        <span><a href="/member/login.do">로그인</a></span>
+        <span><a href="/member/agreement.do">회원가입</a></span>
+        <span><a href="javascript:void(0)">고객센터</a></span>
     </div>
+    <nav id = "top_gnb">
+        <div class="menu item_1 active">상품 등록</div>
+        <div class="menu item_2">상품 목록</div>
+        <div class="menu item_3">상품 소감</div>
+        <div class="menu item_4">유저 목록</div>
+        <div class="menu item_5"></div>
+        <div class="menu item_6"></div>
+    </nav>
 </header>
 </body>
 </html>

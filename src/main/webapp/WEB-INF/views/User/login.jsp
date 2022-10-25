@@ -1,77 +1,39 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!doctype html>
 <html>
 <head>
-    <title>SPRING SECURITY LOGIN 🔐</title>
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"/>
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"
-            defer></script>
-    <style>
-        html,
-        body {
-            height: 100%;
-        }
-
-        /*body {*/
-        /*    display: -ms-flexbox;*/
-        /*    display: flex;*/
-        /*    -ms-flex-align: center;*/
-        /*    text-align: center;*/
-        /*    align-items: center;*/
-        /*    padding-top: 40px;*/
-        /*    padding-bottom: 40px;*/
-        /*    background-color: #f5f5f5;*/
-        /*}*/
-
-        .form-signin {
-            width: 100%;
-            max-width: 330px;
-            padding: 15px;
-            margin: auto;
-        }
-        .form-signin .checkbox {
-            font-weight: 400;
-        }
-        .form-signin .form-control {
-            position: relative;
-            box-sizing: border-box;
-            height: auto;
-            padding: 10px;
-            font-size: 16px;
-        }
-        .form-signin .form-control:focus {
-            z-index: 2;
-        }
-        .form-signin input[type="email"] {
-            margin-bottom: -1px;
-            border-bottom-right-radius: 0;
-            border-bottom-left-radius: 0;
-        }
-        .form-signin input[type="password"] {
-            margin-bottom: 10px;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-        }
-    </style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>LOGIN</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"/>
+  <link rel="stylesheet" href="<c:url value="/resources/css/login.css"/>">
 </head>
 <body>
-<%@include file="../header.jsp"%>
-<form class="form-signin" action="/member/login.do" method="POST">
-<%--    <img src="/resources/img/spring.png" style="width: 200px; height: 95px">--%>
-    <h1 class="h3 mb-3 font-weight-normal"></h1>
-    <input type="email" name="userId" class="form-control" placeholder="MAIL ADDRESS" required="required" autofocus />
-    <input type="password" name="userPass" class="form-control" placeholder="Password" required="required" />
+<div class="bg"></div>
+<form action="" class="login-form">
+  <h1>로그인</h1>
+  <p>신규 사용자이신가요? <a href="javascript:void(0)">계정 만들기</a></p>
+  <label for="userEmail">이메일 주소<input type="email" id="userEmail" placeholder="이메일 주소를 입력해주세요."/></label>
+  <input type="submit" class="btn-submit" value="계속"/>
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit">LOGIN</button>
-    <c:if test="${msg == false}">
-        <p style="color: red">ID와 Password를 확인해주세요.</p>
-    </c:if>
+  <div class="divider">
+    <hr/><span>또는</span>
+  </div>
+
+  <button class="btn-google">
+    <i class="icon icon-google"></i>Google로 계속
+  </button>
+
+  <button class="btn-facebook">
+    <i class="icon icon-Facebook"></i>Facebook으로 계속
+  </button>
+
+  <p class="captcha-text">
+    reCAPTCHA로 보호되며 Google <a href="javascript:void(0)">개인정보보호 정책</a> 및 <a href="javascript:void(0)">서비스 약관의</a> 적용을 받습니다.
+  </p>
+
 </form>
 </body>
 </html>
