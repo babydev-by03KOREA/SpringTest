@@ -1,0 +1,6 @@
+@charset "UTF-8";
+
+.navbar-brand > img {
+    width: auto;
+    height: 60px;
+}
