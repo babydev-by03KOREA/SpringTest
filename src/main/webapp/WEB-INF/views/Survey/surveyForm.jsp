@@ -1,10 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
     <title>SURVEY</title>
+    <!--  웹페이지가 화면(Viewport)에 표현되는 방식을 설정합니다. 모바일 환경에서 적용됩니다.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-<%@ include file="../header.jsp" %>
     <form action="/Survey/surveyValue.do" method="post">
         <h4>WHAT IS YOU'RE ROLE?</h4>
         <div class="surveyRole">

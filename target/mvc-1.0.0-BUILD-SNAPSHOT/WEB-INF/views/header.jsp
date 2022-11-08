@@ -7,8 +7,11 @@
     <!--  웹페이지가 화면(Viewport)에 표현되는 방식을 설정합니다. 모바일 환경에서 적용됩니다.  -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>HEADER</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"/>
-    <link rel="stylesheet" href="/resources/css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+<%--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"/>--%>
+    <link rel="stylesheet" href="/resources/css/header.css">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"/>
@@ -18,36 +21,46 @@
             defer></script>
 </head>
 <body>
-<header>
-    <!-- nav 상단 고정-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Fifth navbar example">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/index.do">
-                <img
-                        src="/resources/img/OSMEDI_LOGO.png"
-                        alt="MDB Logo"
-                        loading="lazy"
-                />
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarsExample05">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                </ul>
-<%--                <form>--%>
-<%--                    <input class="form-control" type="text" placeholder="Search" aria-label="Search">--%>
-<%--                </form>--%>
-            </div>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/index.do">KWAIHS</a>
         </div>
-    </nav>
-</header>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/Survey/survey.do">SURVEY</a></li>
+            <li><a href="/JSTL/basic.do">JSTL</a></li>
+            <li><a href="/Products/cardProducts.do">Products</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+        <c:if test="${member eq null}">
+            <li><a href="/member/agreement.do"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+            <li><a href="/member/login.do"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+        </c:if>
+            <c:if test="${member ne null}">
+                <c:if test="${member.verify eq 9}">
+                    <button type="button" class="btn btn-outline-light me-2" onclick="location.href='/admin/index.do'">ADMIN-ONLY</button>
+                </c:if>
+                <button type="button" class="btn btn-outline-light me-2" onclick="void(0);">${member.userName}님 환영해요!</button>
+                <button type="button" class="btn btn-outline-light me-2" onclick="location.href='/member/logout.do'">LOGOUT</button>
+            </c:if>
+        </ul>
+    </div>
+</nav>
+<%-- <c:if test="${member eq null}">
+                        <button type="button" class="btn btn-outline-light me-2" onclick="location.href='/member/login.do'">
+                            LOGIN
+                        </button>
+                        <button type="button" class="btn btn-outline-light me-2"
+                                onclick="location.href='/member/signup.do'">SIGN-UP
+                        </button>
+                    </c:if>
+                    <c:if test="${member ne null}">
+                        <c:if test="${member.verify eq 9}">
+                            <button type="button" class="btn btn-outline-light me-2" onclick="location.href='/admin/index.do'">ADMIN-ONLY</button>
+                        </c:if>
+                        <button type="button" class="btn btn-outline-light me-2" onclick="location.href='/member/login.do'">${member.userName}님 환영해요!</button>
+                        <button type="button" class="btn btn-outline-light me-2" onclick="location.href='/member/logout.do'">LOGOUT</button>
+                    </c:if>
+                    --%>
 </body>
 </html>

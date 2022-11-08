@@ -13,11 +13,15 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.inject.Inject;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 @Controller
-@RequestMapping("/member/*")
+@RequestMapping("/member/")
 public class MemberController {
 
     private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
@@ -43,10 +47,15 @@ public class MemberController {
     }
 
     @RequestMapping(value = "signup.do", method = RequestMethod.POST)
-    public String postSignup(MemberDTO dto, @RequestParam(value = "agree", defaultValue = "false") Boolean agree) throws Exception {
+    public String postSignup(MemberDTO dto, @RequestParam(value = "agree", defaultValue = "false") Boolean agree, HttpServletResponse response) throws IOException {
         logger.info("signup.do POST MAPPING DATA PROCESSING Val: " + agree);
 
         if (!agree) {
+            response.setContentType("text/html");
+            response.setCharacterEncoding("UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>confirm('약관 동의에 체크해주세요.');</script>");
+            out.flush();
             return "User/agreement";
         }
 
@@ -79,7 +88,7 @@ public class MemberController {
     }
 
     @PostMapping("login.do")
-    public String postLogin(MemberDTO dto, RedirectAttributes redirect, HttpServletRequest request) throws Exception {
+    public String postLogin(MemberDTO dto, RedirectAttributes redirect, HttpServletRequest request, @CookieValue(value = "REMEMBER", required = false) Cookie rememberCookie) throws Exception {
         logger.info("POST LOGIN APPROACH > LOGIN PROGRESSING...");
 
         MemberDTO login = service.signin(dto);
@@ -92,7 +101,7 @@ public class MemberController {
             session.setAttribute("member", login);
         } else {
             session.setAttribute("member", null);
-            redirect.addAttribute("msg", false);
+            redirect.addFlashAttribute("message", false);
             return "redirect:/member/login.do";
         }
 

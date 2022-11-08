@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @Controller
-@RequestMapping("/JSTL/*")
+@RequestMapping("/JSTL/")
 public class JSTLController {
 
     private static final Logger logger = LoggerFactory.getLogger(JSTLController.class);

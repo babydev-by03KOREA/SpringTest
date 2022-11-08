@@ -3,46 +3,75 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title>LOGIN</title>
-    <link rel="stylesheet" href="/resources/css/login.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"/>
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"/>
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"
-            defer></script>
+    <link rel="stylesheet" href="/resources/css/login.css" />
 </head>
 <body>
-<%@include file="../header.jsp" %>
-<section class="text-center">
-    <main class="form-signin">
-        <form action="/member/login.do" method="post">
-            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
-            <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="userId"/>
-                <label for="floatingInput">Email address</label>
+<%@include file="../header.jsp"%>
+<article class="section">
+    <div class="login__group">
+        <form action="/member/login.do" method="post" class="login__form">
+            <div>
+                <h1 class="login__title">로그인</h1>
             </div>
-            <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="userPass"/>
-                <label for="floatingPassword">Password</label>
-            </div>
-
-            <div class="checkbox mb-3">
+            <div>
+                <label class="login__set">아이디를 입력하세요.</label>
                 <label>
-                    <input type="checkbox" value="remember-me"> Remember me
+                    <input type="text" id="userid" name="userId" class="login__input__ID" />
                 </label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-            <p class="mt-5 mb-3 text-muted">© 2017–2022</p>
+            <div>
+                <label class="login__set">비밀번호를 입력하세요.</label>
+                <label>
+                    <input type="password" id="passwd" name="userPass" class="login__input__PWD" />
+                </label>
+            </div>
+            <c:if test="${message eq false}">
+                <div style="color:red;"> 아이디 또는 비밀번호가 일치하지 않습니다.
+                </div>
+            </c:if>
+            <div>
+                <div class="id__save__box">
+                    <label for="svchk">
+                        <input type="checkbox" id="svchk" name="cookieCheck" value="Y" />
+                        <b>아이디 저장</b>
+                    </label>
+                </div>
+            </div>
+            <div>
+                <div class="login__sub">
+                    <input type="submit" value="로그인">
+                </div>
+            </div>
         </form>
-    </main>
-</section>
-<%--<%@include file="../footer.jsp"%>--%>
+        <div>
+            <ul class="find__menu">
+                <li><a href="/member/findMyId.do">아이디 찾기 ></a></li>
+                <li><a href="/member/findMyPWD.do">비밀번호 찾기 ></a></li>
+            </ul>
+        </div>
+        <hr/>
+        <div class="SNS">
+            <div class="snsInfo">
+                카카오로 3초만에 회원가입!
+            </div>
+            <ul>
+                <li><a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=b516cfd19e1309e1920f8910eedeabc2&redirect_uri=http://localhost:8080/Kakao/UserLogin.do&response_type=code"><img src="/resources/img/KakaoBtn.png" alt="카카오로 로그인" class="SNS__Kakao"></a></li>
+            </ul>
+        </div>
+        <div class="GeneralJoin">
+            <div class="joinInfo">
+                초간단 30초 일반 회원가입!
+            </div>
+            <div class="joinBtn">
+                <button type="button" onclick="location.href='/member/UserJoin.do'">일반 회원가입</button>
+            </div>
+        </div>
+    </div>
+</article>
+<%@include file="../footer.jsp"%>
 </body>
 </html>

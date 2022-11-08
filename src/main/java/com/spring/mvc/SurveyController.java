@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/Survey/*")
+@RequestMapping("/Survey/")
 public class SurveyController {
 
     private static final Logger logger = LoggerFactory.getLogger(SurveyController.class);
