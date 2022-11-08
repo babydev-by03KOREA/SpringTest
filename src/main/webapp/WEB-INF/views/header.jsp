@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 <%--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"/>--%>
-    <link rel="stylesheet" href="/resources/css/header.css">
+    <link rel="stylesheet" href="<c:url value="/resources/css/header.css"/>">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"/>
@@ -21,31 +21,19 @@
             defer></script>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/index.do">KWAIHS</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="/Survey/survey.do">SURVEY</a></li>
-            <li><a href="/JSTL/basic.do">JSTL</a></li>
-            <li><a href="/Products/cardProducts.do">Products</a></li>
+<header>
+    <a href="/index.do"><img class="logo" src="<c:url value="/resources/img/OSMEDI_LOGO.png" />"/></a>
+    <nav>
+        <ul>
+            <li class="active"><a href="/Products/cardProducts.do">Products</a></li>
+            <li><a href="#">Story</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-        <c:if test="${member eq null}">
-            <li><a href="/member/agreement.do"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
-            <li><a href="/member/login.do"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
-        </c:if>
-            <c:if test="${member ne null}">
-                <c:if test="${member.verify eq 9}">
-                    <button type="button" class="btn btn-outline-light me-2" onclick="location.href='/admin/index.do'">ADMIN-ONLY</button>
-                </c:if>
-                <button type="button" class="btn btn-outline-light me-2" onclick="void(0);">${member.userName}님 환영해요!</button>
-                <button type="button" class="btn btn-outline-light me-2" onclick="location.href='/member/logout.do'">LOGOUT</button>
-            </c:if>
-        </ul>
-    </div>
-</nav>
+    </nav>
+</header>
+
+
 <%-- <c:if test="${member eq null}">
                         <button type="button" class="btn btn-outline-light me-2" onclick="location.href='/member/login.do'">
                             LOGIN
