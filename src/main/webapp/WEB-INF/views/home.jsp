@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Position 예시</title>
+    <title>OSMEDI :: 믿음직한 약사들의 친구</title>
     <link rel="stylesheet" href="<c:url value="/resources/css/description.css"/>">
 </head>
 <body>

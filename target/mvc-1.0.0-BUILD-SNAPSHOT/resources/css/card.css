@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+.container {
+    text-align: center;
+    margin-top: 200px;
+}
+
+.card-box {
+    position: relative;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    display: inline-block;
+    margin: 10px;
+    overflow: hidden;
+    box-shadow: 0 20px 35px rgb(0,0,0,0.26);
+    transition: 0.5s;
+}
+
+.card-box:hover {
+    transform: scale(0.95);
+}
+
+.img-gradient {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* linear-gradient(시작점, 끝점)*/
+    background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
+    z-index: 1;
+}
+
+.text-wrap {
+    position: absolute;
+    bottom: 0;
+    padding: 24px;
+    text-align: left;
+}
+
+.text-wrap h1 {
+    color: #141922;
+}
+
+.text-wrap p {
+    color: #141922;
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.cart-btn {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    background: url(/resources/img/shoppingCart.png) no-repeat center;
+    /*background-size: 24px;*/
+    z-index: 2;
+}
