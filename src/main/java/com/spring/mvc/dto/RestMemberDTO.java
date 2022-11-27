@@ -6,8 +6,10 @@ public class RestMemberDTO {
     private String userName;
     private String userId;
     private String userPassword;
+    public RestMemberDTO(){}
 
     public RestMemberDTO(int userNo, String userName, String userId, String userPassword) {
+        super();
         this.userNo = userNo;
         this.userName = userName;
         this.userId = userId;
